@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import Popup from "./Popup";
 
 const API = () => {
-const [data, setData] = useState();
-const [showPopup, setShowPopup] = useState(false);
-const [episodeId, setEpisodeId] = useState();
+  const [data, setData] = useState();
+  const [showPopup, setShowPopup] = useState(false);
+  const [episodeId, setEpisodeId] = useState();
 
   // test sort
   const [isOldestFirst, setIsOldestFirst] = useState(true);
@@ -26,42 +26,38 @@ const [episodeId, setEpisodeId] = useState();
   };
 
   //test sort
-function sortByDate () {
+  function sortByDate() {
+    let sortedResults = [...searchResults];
+    sortedResults.sort((a, b) => {
+      if (a.fields.title < b.fields.title) {
+        return -1;
+      }
+      if (a.fields.title > b.fields.title) {
+        return 1;
+      }
+      return 0;
+    });
 
-  let sortedResults = [...searchResults];
-  sortedResults.sort((a, b) => {
-    if (a.fields.title < b.fields.title) {
-      return -1;
-    }
-    if (a.fields.title > b.fields.title) {
-      return 1;
-    }
-    return 0;
-  })
-  
-  // let newPostList = [];
+    // let newPostList = [];
 
-  // if (isOldestFirst) {
-  //   newPostList = searchResults.sort((a, b) => a.fields.title > b.fields.title);
-  // }
-  // else {
-  //   newPostList = searchResults.sort((a, b) => a.fields.title < b.fields.title);
-  // }
-  
-  // setSearchResults(newPostList);
-  // console.log('newPostList', newPostList)
+    // if (isOldestFirst) {
+    //   newPostList = searchResults.sort((a, b) => a.fields.title > b.fields.title);
+    // }
+    // else {
+    //   newPostList = searchResults.sort((a, b) => a.fields.title < b.fields.title);
+    // }
 
-}
+    // setSearchResults(newPostList);
+    // console.log('newPostList', newPostList)
+  }
 
-const toggleSort = () => {
-setIsOldestFirst(!isOldestFirst);
-sortByDate();
-console.log('clicked togglesort')
-}
-
+  const toggleSort = () => {
+    setIsOldestFirst(!isOldestFirst);
+    sortByDate();
+    console.log("clicked togglesort");
+  };
 
   //end test sort
-
 
   //filter the searchterm and return results
   useEffect(() => {
