@@ -16,7 +16,7 @@ const Popup = ({id}) => {
       }, []);
     
       if (!data) {
-        return <div>no data</div>;
+        return <div>loading...</div>;
       } else {
         return (
         <div>

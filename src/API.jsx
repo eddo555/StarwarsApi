@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import Popup from "./Popup";
 
 const API = () => {
-  const [data, setData] = useState();
-  const [showPopup, setShowPopup] = useState(false);
-  const [episodeId, setEpisodeId] = useState();
-  // const [orderFirst, setOrderFirst] = useState();
+const [data, setData] = useState();
+const [showPopup, setShowPopup] = useState(false);
+const [episodeId, setEpisodeId] = useState();
+
+  // test sort
+  const [isOldestFirst, setIsOldestFirst] = useState(true);
+  //
 
   //handle value from searchbar
   const [searchTerm, setSearchTerm] = useState("");
@@ -21,6 +24,44 @@ const API = () => {
     console.log("catch id", id);
     setEpisodeId(id);
   };
+
+  //test sort
+function sortByDate () {
+
+  let sortedResults = [...searchResults];
+  sortedResults.sort((a, b) => {
+    if (a.fields.title < b.fields.title) {
+      return -1;
+    }
+    if (a.fields.title > b.fields.title) {
+      return 1;
+    }
+    return 0;
+  })
+  
+  // let newPostList = [];
+
+  // if (isOldestFirst) {
+  //   newPostList = searchResults.sort((a, b) => a.fields.title > b.fields.title);
+  // }
+  // else {
+  //   newPostList = searchResults.sort((a, b) => a.fields.title < b.fields.title);
+  // }
+  
+  // setSearchResults(newPostList);
+  // console.log('newPostList', newPostList)
+
+}
+
+const toggleSort = () => {
+setIsOldestFirst(!isOldestFirst);
+sortByDate();
+console.log('clicked togglesort')
+}
+
+
+  //end test sort
+
 
   //filter the searchterm and return results
   useEffect(() => {
@@ -66,7 +107,7 @@ const API = () => {
             <tr>
               <th>nr</th>
               <th>title</th>
-              <th>release date</th>
+              <th onClick={toggleSort}>release date</th>
             </tr>
           </thead>
           {searchResults &&
@@ -74,7 +115,7 @@ const API = () => {
               console.log("map", item);
 
               return (
-                <React.Fragment key={id}>
+                <React.Fragment key={`${id}`}>
                   <tbody>
                     <tr>
                       <td>{item.fields.episode_id}</td>
