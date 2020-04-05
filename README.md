@@ -1,7 +1,9 @@
 *This is a codetest*
 
 •Click on movie title to get more information.
+
 •Enter movie title in searchbar to sort out other movies
+
 •sorting not completed
 
 
