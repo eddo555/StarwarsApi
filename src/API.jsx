@@ -27,28 +27,18 @@ const API = () => {
 
   //test sort
   function sortByDate() {
-    let sortedResults = [...searchResults];
-    sortedResults.sort((a, b) => {
-      if (a.fields.title < b.fields.title) {
-        return -1;
-      }
-      if (a.fields.title > b.fields.title) {
-        return 1;
-      }
-      return 0;
-    });
+   
+    let newPostList = [];
 
-    // let newPostList = [];
+    if (isOldestFirst) {
+      newPostList = searchResults.sort((a, b) => a.fields.release_date > b.fields.release_date);
+    }
+    else {
+      newPostList = searchResults.sort((a, b) => a.fields.release_date < b.fields.release_date);
+    }
 
-    // if (isOldestFirst) {
-    //   newPostList = searchResults.sort((a, b) => a.fields.title > b.fields.title);
-    // }
-    // else {
-    //   newPostList = searchResults.sort((a, b) => a.fields.title < b.fields.title);
-    // }
-
-    // setSearchResults(newPostList);
-    // console.log('newPostList', newPostList)
+    setSearchResults(newPostList);
+    console.log('newPostList', newPostList)
   }
 
   const toggleSort = () => {
