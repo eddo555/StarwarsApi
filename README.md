@@ -1,5 +1,9 @@
 *This is a codetest*
 
+•Click on movie title to get more information.
+•Enter movie title in searchbar to sort out other movies
+•sorting not completed
+
 
 This is the simple API that you can use: https://star-wars-api.herokuapp.com/films
 The API returns a JSON array with star wars movies.
