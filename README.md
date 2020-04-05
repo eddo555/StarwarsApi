@@ -9,7 +9,6 @@ The following list is what tasks you need to complete. If there are certain ones
 • Release date
 • Episode number 
 
-yarn start
 
 ## Available Scripts
 
