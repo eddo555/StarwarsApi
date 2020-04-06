@@ -28,17 +28,17 @@ const API = () => {
   //test sort
   function sortByDate() {
    
-    let newPostList = [];
+    let newSearchResult = [];
 
     if (isOldestFirst) {
-      newPostList = searchResults.sort((a, b) => a.fields.release_date > b.fields.release_date);
+      newSearchResult = searchResults.sort((a, b) => a.fields.release_date > b.fields.release_date);
     }
     else {
-      newPostList = searchResults.sort((a, b) => a.fields.release_date < b.fields.release_date);
+      newSearchResult = searchResults.sort((a, b) => a.fields.release_date < b.fields.release_date);
     }
 
-    setSearchResults(newPostList);
-    console.log('newPostList', newPostList)
+    setSearchResults(newSearchResult);
+    console.log('newPostList', newSearchResult)
   }
 
   const toggleSort = () => {
