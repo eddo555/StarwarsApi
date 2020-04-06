@@ -26,25 +26,76 @@ const API = () => {
   };
 
   //test sort
-  function sortByDate() {
-   
-    let newSearchResult = [];
-
+  function sortByTitle() {
     if (isOldestFirst) {
-      newSearchResult = searchResults.sort((a, b) => a.fields.release_date > b.fields.release_date);
-    }
-    else {
-      newSearchResult = searchResults.sort((a, b) => a.fields.release_date < b.fields.release_date);
-    }
+      searchResults.sort(function (a, b) {
+        var nameA = a.fields.title;
+        var nameB = b.fields.title;
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
 
-    setSearchResults(newSearchResult);
-    console.log('newPostList', newSearchResult)
+        return 0;
+      });
+    } else {
+      searchResults.sort(function (a, b) {
+        var nameA = a.fields.title;
+        var nameB = b.fields.title;
+        if (nameA > nameB) {
+          return -1;
+        }
+        if (nameA < nameB) {
+          return 1;
+        }
+
+        return 0;
+      });
+    }
   }
 
-  const toggleSort = () => {
+  function sortByDate() {
+    if (isOldestFirst) {
+      searchResults.sort(function (a, b) {
+        var nameA = a.fields.release_date;
+        var nameB = b.fields.release_date;
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        return 0;
+      });
+    } else {
+      searchResults.sort(function (a, b) {
+        var nameA = a.fields.release_date;
+        var nameB = b.fields.release_date;
+        if (nameA > nameB) {
+          return -1;
+        }
+        if (nameA < nameB) {
+          return 1;
+        }
+
+        return 0;
+      });
+    }
+  }
+
+  const toggleSort = (str) => {
     setIsOldestFirst(!isOldestFirst);
-    sortByDate();
-    console.log("clicked togglesort");
+
+    if (str === "nr" || str === "title") {
+      sortByTitle();
+      console.log("entered 1");
+    } else if (str === "date") {
+      sortByDate();
+      console.log("entered 2");
+    }
   };
 
   //end test sort
@@ -91,9 +142,9 @@ const API = () => {
         <table>
           <thead>
             <tr>
-              <th onClick={toggleSort}>nr</th>
-              <th onClick={toggleSort}>title</th>
-              <th onClick={toggleSort}>release date</th>
+              <th onClick={() => toggleSort("nr")}>nr</th>
+              <th onClick={() => toggleSort("title")}>title</th>
+              <th onClick={() => toggleSort("date")}>release date</th>
             </tr>
           </thead>
           {searchResults &&
