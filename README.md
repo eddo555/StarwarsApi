@@ -4,7 +4,7 @@
 
 •Enter movie title in searchbar to sort out other movies
 
-•sorting not completed
+•Click nr, title or date to sort
 
 
 This is the simple API that you can use: https://star-wars-api.herokuapp.com/films
