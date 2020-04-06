@@ -117,20 +117,18 @@ const API = () => {
 
   const toggleSort = (str) => {
     setIsOldestFirst(!isOldestFirst);
-//receive str argument to enter corresponding function
+    //receive str argument to enter corresponding function
     if (str === "title") {
       sortByTitle();
-      console.log("entered 1");
+      console.log("entered title");
     } else if (str === "date") {
       sortByDate();
-      console.log("entered 2");
-    }
-    else if (str === "nr") {
+      console.log("entered date");
+    } else if (str === "nr") {
       sortByNr();
-      console.log("entered 2");
+      console.log("entered nr");
     }
   };
-
 
   //filter the searchterm and return results
   useEffect(() => {
