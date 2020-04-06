@@ -25,7 +25,7 @@ const API = () => {
     setEpisodeId(id);
   };
 
-  //test sort
+  //sort
   function sortByTitle() {
     if (isOldestFirst) {
       searchResults.sort(function (a, b) {
@@ -85,20 +85,52 @@ const API = () => {
       });
     }
   }
+  function sortByNr() {
+    if (isOldestFirst) {
+      searchResults.sort(function (a, b) {
+        var nameA = a.fields.episode_id;
+        var nameB = b.fields.episode_id;
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        return 0;
+      });
+    } else {
+      searchResults.sort(function (a, b) {
+        var nameA = a.fields.episode_id;
+        var nameB = b.fields.episode_id;
+        if (nameA > nameB) {
+          return -1;
+        }
+        if (nameA < nameB) {
+          return 1;
+        }
+
+        return 0;
+      });
+    }
+  }
 
   const toggleSort = (str) => {
     setIsOldestFirst(!isOldestFirst);
-
-    if (str === "nr" || str === "title") {
+//receive str argument to enter corresponding function
+    if (str === "title") {
       sortByTitle();
       console.log("entered 1");
     } else if (str === "date") {
       sortByDate();
       console.log("entered 2");
     }
+    else if (str === "nr") {
+      sortByNr();
+      console.log("entered 2");
+    }
   };
 
-  //end test sort
 
   //filter the searchterm and return results
   useEffect(() => {
