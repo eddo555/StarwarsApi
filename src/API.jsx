@@ -27,7 +27,7 @@ const API = () => {
 
   //test sort
   function sortByDate() {
-   
+   console.log()
     let newSearchResult = [];
 
     if (isOldestFirst) {
@@ -91,8 +91,8 @@ const API = () => {
         <table>
           <thead>
             <tr>
-              <th>nr</th>
-              <th>title</th>
+              <th onClick={toggleSort}>nr</th>
+              <th onClick={toggleSort}>title</th>
               <th onClick={toggleSort}>release date</th>
             </tr>
           </thead>
