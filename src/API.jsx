@@ -27,7 +27,7 @@ const API = () => {
 
   //test sort
   function sortByDate() {
-   console.log()
+   
     let newSearchResult = [];
 
     if (isOldestFirst) {
