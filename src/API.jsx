@@ -16,7 +16,7 @@ const API = () => {
   const [searchResults, setSearchResults] = React.useState([]);
 
   const handleChange = (event) => {
-    setSearchTerm(event.target.value);
+    setSearchTerm(event.target.value.toLowerCase());
   };
 
   //toggle for popup
@@ -133,6 +133,7 @@ const API = () => {
 
   //filter the searchterm and return results
   useEffect(() => {
+    
     const results =
       data &&
       data.filter((item) =>
