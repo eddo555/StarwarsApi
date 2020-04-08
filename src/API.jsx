@@ -138,6 +138,7 @@ const API = () => {
       data.filter((item) =>
         item.fields.title.toLowerCase().includes(searchTerm)
       );
+      
     setSearchResults(results);
     console.log("results", results);
   }, [data, searchTerm]);
@@ -211,7 +212,7 @@ const API = () => {
         <div className='cell'
         style={{gridRow:'4/8', gridColumn:'4/9'}}
         >
-        {showPopup ? <Popup id={episodeId} /> : null}
+        {showPopup ? <Popup list= {data} id={episodeId} /> : null}
         </div>
       </div>
       </Style>
