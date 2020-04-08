@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Popup from "./Popup";
+import Style from "./Style";
 
 const API = () => {
   const [data, setData] = useState();
@@ -156,9 +157,15 @@ const API = () => {
     return <div>no data</div>;
   } else {
     return (
-      <div>
+      <Style>
+      <div className="grid-container" 
+      style={{
+        gridTemplateColumns:'repeat(10,1fr',
+        gridTemplateRows:'repeat(10,1fr'}}>
         {/* searchbar */}
-        <div>
+        <div className='cell'
+        style={{gridRow:'0/6', gridColumn:'1/11'}}
+        >
           <input
             type="text"
             placeholder="enter episode name"
@@ -168,7 +175,9 @@ const API = () => {
         </div>
 
         {/* map searchresults and show list */}
-
+        <div className='cell'
+        style={{gridRow:'2/4', gridColumn:'1/11'}}
+        >
         <table>
           <thead>
             <tr>
@@ -197,9 +206,15 @@ const API = () => {
               );
             })}
         </table>
+        </div>
         {/* click to show popup component */}
+        <div className='cell'
+        style={{gridRow:'4/8', gridColumn:'4/9'}}
+        >
         {showPopup ? <Popup id={episodeId} /> : null}
+        </div>
       </div>
+      </Style>
     );
   }
 };
