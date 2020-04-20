@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Popup from "./Popup";
 import Style from "./Style";
+import Searchbar from "./SearchBar"
 
 const API = () => {
   const [data, setData] = useState();
@@ -175,6 +176,7 @@ const API = () => {
             onChange={handleChange}
           />
         </div>
+        <Searchbar list = {data} search = {searchTerm}/>
 
         {/* map searchresults and show list */}
         <div className='cell'
