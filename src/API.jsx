@@ -176,7 +176,7 @@ const API = () => {
             onChange={handleChange}
           />
         </div>
-        <Searchbar list = {data} search = {searchTerm}/>
+        <Searchbar list = {data}/>
 
         {/* map searchresults and show list */}
         <div className='cell'
