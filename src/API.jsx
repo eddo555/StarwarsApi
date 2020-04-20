@@ -169,14 +169,9 @@ const API = () => {
         <div className='cell'
         style={{gridRow:'0/6', gridColumn:'1/11'}}
         >
-          <input
-            type="text"
-            placeholder="enter episode name"
-            value={searchTerm}
-            onChange={handleChange}
-          />
+          <Searchbar term = {searchTerm} change= {handleChange}/>
         </div>
-        <Searchbar list = {data}/>
+        
 
         {/* map searchresults and show list */}
         <div className='cell'
