@@ -63,17 +63,17 @@ const API = () => {
         <div className='cell'
         style={{gridRow:'0/6', gridColumn:'1/11'}}
         >
-        <Searchbar term = {searchTerm} change= {handleChange}/>
+        <Searchbar searchTerm = {searchTerm} handleChange= {handleChange}/>
         </div>
 
          {/* map searchresults and show list */}
-        <List list = {searchResults} pop = {togglePopup} />
+        <List searchResults = {searchResults} pop = {togglePopup} />
        
         {/* Popup */}
         <div className='cell'
         style={{gridRow:'4/8', gridColumn:'4/9'}}
         >
-        {showPopup ? <Popup list= {data} id={episodeId} /> : null}
+        {showPopup ? <Popup data= {data} id={episodeId} /> : null}
         </div>
       </div>
       </Style>

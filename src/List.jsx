@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-const List = ({ list, pop }) => {
+const List = ({ searchResults, pop }) => {
   const [isOldestFirst, setIsOldestFirst] = useState(true);
 
    //sort
    function sortByTitle() {
     if (isOldestFirst) {
-      list.sort(function (a, b) {
+      searchResults.sort(function (a, b) {
         var nameA = a.fields.title;
         var nameB = b.fields.title;
         if (nameA < nameB) {
@@ -19,7 +19,7 @@ const List = ({ list, pop }) => {
         return 0;
       });
     } else {
-      list.sort(function (a, b) {
+      searchResults.sort(function (a, b) {
         var nameA = a.fields.title;
         var nameB = b.fields.title;
         if (nameA > nameB) {
@@ -36,7 +36,7 @@ const List = ({ list, pop }) => {
 
   function sortByDate() {
     if (isOldestFirst) {
-      list.sort(function (a, b) {
+      searchResults.sort(function (a, b) {
         var nameA = a.fields.release_date;
         var nameB = b.fields.release_date;
         if (nameA < nameB) {
@@ -49,7 +49,7 @@ const List = ({ list, pop }) => {
         return 0;
       });
     } else {
-      list.sort(function (a, b) {
+      searchResults.sort(function (a, b) {
         var nameA = a.fields.release_date;
         var nameB = b.fields.release_date;
         if (nameA > nameB) {
@@ -65,7 +65,7 @@ const List = ({ list, pop }) => {
   }
   function sortByNr() {
     if (isOldestFirst) {
-      list.sort(function (a, b) {
+      searchResults.sort(function (a, b) {
         var nameA = a.fields.episode_id;
         var nameB = b.fields.episode_id;
         if (nameA < nameB) {
@@ -78,7 +78,7 @@ const List = ({ list, pop }) => {
         return 0;
       });
     } else {
-      list.sort(function (a, b) {
+      searchResults.sort(function (a, b) {
         var nameA = a.fields.episode_id;
         var nameB = b.fields.episode_id;
         if (nameA > nameB) {
@@ -118,8 +118,8 @@ const List = ({ list, pop }) => {
               <th onClick={() => toggleSort("date")}>release date</th>
             </tr>
           </thead>
-          {list &&
-            list.map((item, id) => {
+          {searchResults &&
+            searchResults.map((item, id) => {
               // console.log("map", item);
 
               return (

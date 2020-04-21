@@ -1,6 +1,6 @@
 import React from "react";
 
-const Searchbar = ({ term, change }) => {
+const Searchbar = ({ searchTerm, handleChange }) => {
   
 // callback value and onchange
   return (
@@ -8,8 +8,8 @@ const Searchbar = ({ term, change }) => {
       <input
         type="text"
         placeholder="enter episode name"
-        value={term}
-        onChange={change}
+        value={searchTerm}
+        onChange={handleChange}
       />
     </div>
   );

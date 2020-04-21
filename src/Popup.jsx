@@ -1,12 +1,12 @@
 import React from "react";
 
-const Popup = ({ list, id }) => {
+const Popup = ({ data, id }) => {
   // console.log("popup", list, id);
   return (
     <div>
       {/* filter data for episode_id in props then returning it */}
-      {list &&
-        list
+      {data &&
+        data
           .filter((item) => item.fields.episode_id === id)
           .map((item, id) => {
             return (
