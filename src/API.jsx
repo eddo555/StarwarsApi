@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Popup from "./Popup";
 import Style from "./Style";
-import Searchbar from "./SearchBar"
+import Searchbar from "./SearchBar";
+import List from "./List"
 
 const API = () => {
   const [data, setData] = useState();
@@ -165,48 +166,18 @@ const API = () => {
       style={{
         gridTemplateColumns:'repeat(10,1fr',
         gridTemplateRows:'repeat(10,1fr'}}>
+
         {/* searchbar */}
         <div className='cell'
         style={{gridRow:'0/6', gridColumn:'1/11'}}
         >
-          <Searchbar term = {searchTerm} change= {handleChange}/>
+        <Searchbar term = {searchTerm} change= {handleChange}/>
         </div>
-        
 
-        {/* map searchresults and show list */}
-        <div className='cell'
-        style={{gridRow:'2/4', gridColumn:'1/11'}}
-        >
-        <table>
-          <thead>
-            <tr>
-              <th onClick={() => toggleSort("nr")}>nr</th>
-              <th onClick={() => toggleSort("title")}>title</th>
-              <th onClick={() => toggleSort("date")}>release date</th>
-            </tr>
-          </thead>
-          {searchResults &&
-            searchResults.map((item, id) => {
-              console.log("map", item);
-
-              return (
-                <React.Fragment key={`${id}`}>
-                  <tbody>
-                    <tr>
-                      <td>{item.fields.episode_id}</td>
-                      {/* wrapping in arrowfunction prevents loop */}
-                      <td onClick={() => togglePopup(item.fields.episode_id)}>
-                        {item.fields.title}
-                      </td>
-                      <td>{item.fields.release_date}</td>
-                    </tr>
-                  </tbody>
-                </React.Fragment>
-              );
-            })}
-        </table>
-        </div>
-        {/* click to show popup component */}
+         {/* map searchresults and show list */}
+        <List list = {searchResults} pop = {togglePopup} sort = {toggleSort}/>
+       
+        {/* Popup */}
         <div className='cell'
         style={{gridRow:'4/8', gridColumn:'4/9'}}
         >
