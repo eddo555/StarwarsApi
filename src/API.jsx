@@ -9,7 +9,7 @@ const API = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [episodeId, setEpisodeId] = useState();
 
-  // test sort
+  // toggle sort
   const [isOldestFirst, setIsOldestFirst] = useState(true);
   //
 
@@ -24,7 +24,7 @@ const API = () => {
   //toggle for popup
   const togglePopup = (id) => {
     setShowPopup(!showPopup);
-    console.log("catch id", id);
+    // console.log("catch id", id);
     setEpisodeId(id);
   };
 
@@ -123,13 +123,13 @@ const API = () => {
     //receive str argument to enter corresponding function
     if (str === "title") {
       sortByTitle();
-      console.log("entered title");
+      // console.log("entered title");
     } else if (str === "date") {
       sortByDate();
-      console.log("entered date");
+      // console.log("entered date");
     } else if (str === "nr") {
       sortByNr();
-      console.log("entered nr");
+      // console.log("entered nr");
     }
   };
 
@@ -143,7 +143,7 @@ const API = () => {
       );
       
     setSearchResults(results);
-    console.log("results", results);
+    // console.log("results", results);
   }, [data, searchTerm]);
 
   //fetch API put data in  array
@@ -151,7 +151,7 @@ const API = () => {
     async function fetchData() {
       const response = await fetch("https://star-wars-api.herokuapp.com/films");
       const entry = await response.json();
-      console.log(entry);
+      // console.log(entry);
       setData(entry);
     }
     fetchData();

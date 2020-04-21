@@ -1,7 +1,7 @@
 import React from "react";
 
 const Popup = ({ list, id }) => {
-  console.log("popup", list, id);
+  // console.log("popup", list, id);
   return (
     <div>
       {/* filter data for episode_id in props then returning it */}

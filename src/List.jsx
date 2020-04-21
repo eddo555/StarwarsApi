@@ -15,7 +15,7 @@ const List = ({ list, pop, sort }) => {
           </thead>
           {list &&
             list.map((item, id) => {
-              console.log("map", item);
+              // console.log("map", item);
 
               return (
                 <React.Fragment key={`${id}`}>
