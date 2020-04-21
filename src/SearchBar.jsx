@@ -1,6 +1,7 @@
 import React from "react";
 
 const Searchbar = ({ term, change }) => {
+  
 // callback value and onchange
   return (
       <div>

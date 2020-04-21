@@ -1,6 +1,111 @@
-import React from 'react';
+import React, { useState } from "react";
 
-const List = ({ list, pop, sort }) => {
+const List = ({ list, pop }) => {
+  const [isOldestFirst, setIsOldestFirst] = useState(true);
+
+   //sort
+   function sortByTitle() {
+    if (isOldestFirst) {
+      list.sort(function (a, b) {
+        var nameA = a.fields.title;
+        var nameB = b.fields.title;
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        return 0;
+      });
+    } else {
+      list.sort(function (a, b) {
+        var nameA = a.fields.title;
+        var nameB = b.fields.title;
+        if (nameA > nameB) {
+          return -1;
+        }
+        if (nameA < nameB) {
+          return 1;
+        }
+
+        return 0;
+      });
+    }
+  }
+
+  function sortByDate() {
+    if (isOldestFirst) {
+      list.sort(function (a, b) {
+        var nameA = a.fields.release_date;
+        var nameB = b.fields.release_date;
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        return 0;
+      });
+    } else {
+      list.sort(function (a, b) {
+        var nameA = a.fields.release_date;
+        var nameB = b.fields.release_date;
+        if (nameA > nameB) {
+          return -1;
+        }
+        if (nameA < nameB) {
+          return 1;
+        }
+
+        return 0;
+      });
+    }
+  }
+  function sortByNr() {
+    if (isOldestFirst) {
+      list.sort(function (a, b) {
+        var nameA = a.fields.episode_id;
+        var nameB = b.fields.episode_id;
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        return 0;
+      });
+    } else {
+      list.sort(function (a, b) {
+        var nameA = a.fields.episode_id;
+        var nameB = b.fields.episode_id;
+        if (nameA > nameB) {
+          return -1;
+        }
+        if (nameA < nameB) {
+          return 1;
+        }
+
+        return 0;
+      });
+    }
+  }
+  const toggleSort = (str) => {
+    setIsOldestFirst(!isOldestFirst);
+    //receive str argument to enter corresponding function
+    if (str === "title") {
+      sortByTitle();
+      // console.log("entered title");
+    } else if (str === "date") {
+      sortByDate();
+      // console.log("entered date");
+    } else if (str === "nr") {
+      sortByNr();
+      // console.log("entered nr");
+    }
+  };
     return (
         <div className='cell'
         style={{gridRow:'2/4', gridColumn:'1/11'}}
@@ -8,9 +113,9 @@ const List = ({ list, pop, sort }) => {
         <table>
           <thead>
             <tr>
-              <th onClick={() => sort("nr")}>nr</th>
-              <th onClick={() => sort("title")}>title</th>
-              <th onClick={() => sort("date")}>release date</th>
+              <th onClick={() => toggleSort("nr")}>nr</th>
+              <th onClick={() => toggleSort("title")}>title</th>
+              <th onClick={() => toggleSort("date")}>release date</th>
             </tr>
           </thead>
           {list &&

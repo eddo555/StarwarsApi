@@ -9,9 +9,6 @@ const API = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [episodeId, setEpisodeId] = useState();
 
-  // toggle sort
-  const [isOldestFirst, setIsOldestFirst] = useState(true);
-  //
 
   //handle value from searchbar
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,111 +23,6 @@ const API = () => {
     setShowPopup(!showPopup);
     // console.log("catch id", id);
     setEpisodeId(id);
-  };
-
-  //sort
-  function sortByTitle() {
-    if (isOldestFirst) {
-      searchResults.sort(function (a, b) {
-        var nameA = a.fields.title;
-        var nameB = b.fields.title;
-        if (nameA < nameB) {
-          return -1;
-        }
-        if (nameA > nameB) {
-          return 1;
-        }
-
-        return 0;
-      });
-    } else {
-      searchResults.sort(function (a, b) {
-        var nameA = a.fields.title;
-        var nameB = b.fields.title;
-        if (nameA > nameB) {
-          return -1;
-        }
-        if (nameA < nameB) {
-          return 1;
-        }
-
-        return 0;
-      });
-    }
-  }
-
-  function sortByDate() {
-    if (isOldestFirst) {
-      searchResults.sort(function (a, b) {
-        var nameA = a.fields.release_date;
-        var nameB = b.fields.release_date;
-        if (nameA < nameB) {
-          return -1;
-        }
-        if (nameA > nameB) {
-          return 1;
-        }
-
-        return 0;
-      });
-    } else {
-      searchResults.sort(function (a, b) {
-        var nameA = a.fields.release_date;
-        var nameB = b.fields.release_date;
-        if (nameA > nameB) {
-          return -1;
-        }
-        if (nameA < nameB) {
-          return 1;
-        }
-
-        return 0;
-      });
-    }
-  }
-  function sortByNr() {
-    if (isOldestFirst) {
-      searchResults.sort(function (a, b) {
-        var nameA = a.fields.episode_id;
-        var nameB = b.fields.episode_id;
-        if (nameA < nameB) {
-          return -1;
-        }
-        if (nameA > nameB) {
-          return 1;
-        }
-
-        return 0;
-      });
-    } else {
-      searchResults.sort(function (a, b) {
-        var nameA = a.fields.episode_id;
-        var nameB = b.fields.episode_id;
-        if (nameA > nameB) {
-          return -1;
-        }
-        if (nameA < nameB) {
-          return 1;
-        }
-
-        return 0;
-      });
-    }
-  }
-
-  const toggleSort = (str) => {
-    setIsOldestFirst(!isOldestFirst);
-    //receive str argument to enter corresponding function
-    if (str === "title") {
-      sortByTitle();
-      // console.log("entered title");
-    } else if (str === "date") {
-      sortByDate();
-      // console.log("entered date");
-    } else if (str === "nr") {
-      sortByNr();
-      // console.log("entered nr");
-    }
   };
 
   //filter the searchterm and return results
@@ -175,7 +67,7 @@ const API = () => {
         </div>
 
          {/* map searchresults and show list */}
-        <List list = {searchResults} pop = {togglePopup} sort = {toggleSort}/>
+        <List list = {searchResults} pop = {togglePopup} />
        
         {/* Popup */}
         <div className='cell'
